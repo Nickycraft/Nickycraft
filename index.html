@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoGifts - Custom Photo Products</title>
+    <style>
+        /* Design System */
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-16) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-16);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-24);
+        }
+
+        .logo {
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: var(--space-24);
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: var(--font-size-base);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: var(--space-12);
+            align-items: center;
+        }
+
+        .search-box {
+            padding: var(--space-8) var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            width: 200px;
+        }
+
+        .cart-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            transition: background 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .cart-count {
+            background: white;
+            color: var(--color-primary);
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(33, 128, 141, 0.1) 0%, rgba(50, 184, 198, 0.05) 100%);
+            padding: var(--space-32) var(--space-16);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: var(--font-size-4xl);
+            color: var(--color-text);
+            margin-bottom: var(--space-16);
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-12);
+        }
+
+        .btn {
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(var(--color-brown-600-rgb), 0.2);
+        }
+
+        /* Hero Images Grid */
+        .hero-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-16);
+        }
+
+        .hero-image-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .hero-image-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image-item .emoji-fallback {
+            font-size: 48px;
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-16) 0;
+            position: sticky;
+            top: 73px;
+            z-index: 90;
+        }
+
+        .category-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-16);
+            display: flex;
+            gap: var(--space-12);
+            overflow-x: auto;
+        }
+
+        .category-btn {
+            padding: var(--space-8) var(--space-20);
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            white-space: nowrap;
+            transition: all 0.3s;
+            color: var(--color-text);
+        }
+
+        .category-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        .category-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* Products Section */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-32) var(--space-16);
+        }
+
+        .products-section h2 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-24);
+            color: var(--color-text);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-24);
+        }
+
+        .product-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-image .emoji-fallback {
+            font-size: 64px;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: var(--space-8);
+            right: var(--space-8);
+            background: var(--color-primary);
+            color: white;
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .product-info {
+            padding: var(--space-16);
+        }
+
+        .product-category {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            margin-bottom: var(--space-8);
+        }
+
+        .product-name {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .product-desc {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-12);
+        }
+
+        .product-price {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-16);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-16);
+            right: var(--space-16);
+            background: var(--color-secondary);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        .modal-close:hover {
+            background: rgba(var(--color-brown-600-rgb), 0.2);
+        }
+
+        .modal-body {
+            padding: var(--space-32);
+        }
+
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            margin-bottom: var(--space-24);
+        }
+
+        .product-detail-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-detail-image .emoji-fallback {
+            font-size: 120px;
+        }
+
+        .product-detail-info h2 {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-8);
+        }
+
+        .product-detail-info .category {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            margin-bottom: var(--space-16);
+        }
+
+        .product-detail-info .price {
+            font-size: var(--font-size-3xl);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-16);
+        }
+
+        .product-detail-info .description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-16);
+            line-height: 1.6;
+        }
+
+        .product-detail-info .specs {
+            background: var(--color-secondary);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-20);
+        }
+
+        .product-detail-info .specs h4 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-8);
+        }
+
+        .product-detail-info .specs p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        .sample-images {
+            margin-top: var(--space-32);
+        }
+
+        .sample-images h3 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-16);
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-16);
+        }
+
+        .sample-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            border-radius: var(--radius-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-card-border);
+            overflow: hidden;
+        }
+
+        .sample-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sample-item .emoji-fallback {
+            font-size: 32px;
+        }
+
+        /* Cart Drawer */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: var(--color-surface);
+            box-shadow: var(--shadow-lg);
+            z-index: 300;
+            transition: right 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 250;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        .cart-header {
+            padding: var(--space-20);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-size: var(--font-size-xl);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-20);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: var(--space-12);
+            padding: var(--space-12);
+            background: var(--color-secondary);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-12);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--color-surface);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+
+        .cart-item-price {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: none;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cart-footer {
+            padding: var(--space-20);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-16);
+        }
+
+        .cart-delivery {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-8);
+        }
+
+        .cart-grand-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-16);
+            padding-top: var(--space-8);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: var(--space-32);
+            color: var(--color-text-secondary);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-16);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-family: var(--font-family-base);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-32) var(--space-16);
+            margin-top: var(--space-32);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-32);
+        }
+
+        .footer-section h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-16);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            display: block;
+            margin-bottom: var(--space-8);
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-box {
+                width: 150px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sample-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cart-drawer {
+                width: 100%;
+                right: -100%;
+            }
+
+            .modal-body {
+                padding: var(--space-16);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">📸 PhotoGifts</a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#" onclick="openContactModal(); return false;">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <input type="text" class="search-box" placeholder="Search products..." id="searchInput" oninput="searchProducts()">
+                <button class="cart-btn" onclick="toggleCart()">
+                    🛒 Cart <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+        <div class="category-container">
+            <button class="category-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="category-btn" onclick="filterProducts('magazines')">Magazines</button>
+            <button class="category-btn" onclick="filterProducts('frames')">Photo Frames</button>
+            <button class="category-btn" onclick="filterProducts('posters')">Posters</button>
+            <button class="category-btn" onclick="filterProducts('cards')">Handmade Cards</button>
+            <button class="category-btn" onclick="filterProducts('polaroid')">Polaroid Photos</button>
+            <button class="category-btn" onclick="filterProducts('photobooth')">Photobooth</button>
+            <button class="category-btn" onclick="filterProducts('invitations')">E-Invitations</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Transform Your Memories Into Beautiful Gifts</h1>
+                <p>Custom photo frames, invitations &amp; more. Create personalized gifts that tell your story.</p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <button class="btn btn-secondary" onclick="openContactModal()">Contact Us</button>
+                </div>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image-item">
+                    <img src="images/hero/hero-1.jpg" alt="Photo Frames" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="emoji-fallback" style="display:none;">🖼️</span>
+                </div>
+                <div class="hero-image-item">
+                    <img src="images/hero/hero-2.jpg" alt="Gift Boxes" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="emoji-fallback" style="display:none;">🎁</span>
+                </div>
+                <div class="hero-image-item">
+                    <img src="images/hero/hero-3.jpg" alt="Calendars" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="emoji-fallback" style="display:none;">📅</span>
+                </div>
+                <div class="hero-image-item">
+                    <img src="images/hero/hero-4.jpg" alt="Invitations" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="emoji-fallback" style="display:none;">💌</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <h2>Our Products</h2>
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProductModal()">×</button>
+            <div class="modal-body" id="productModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()">×</button>
+            <div class="modal-body">
+                <h2>Contact Us</h2>
+                <p style="margin-bottom: 24px; color: var(--color-text-secondary);">Fill out the form below and we'll get back to you on WhatsApp!</p>
+                <form class="contact-form" onsubmit="submitContactForm(event)">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="contactPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea id="contactMessage" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message on WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+            <div class="modal-body">
+                <h2>Checkout</h2>
+                <p style="margin-bottom: 24px; color: var(--color-text-secondary);">Enter your details to complete your order via WhatsApp</p>
+                <form class="contact-form" onsubmit="submitCheckout(event)">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="checkoutName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="checkoutPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Delivery Address *</label>
+                        <textarea id="checkoutAddress" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Order on WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="modal-close" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">Your cart is empty</div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none;">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">₹0</span>
+            </div>
+            <div class="cart-delivery">
+                <span>Delivery Charge:</span>
+                <span id="cartDelivery">₹100</span>
+            </div>
+            <div class="cart-grand-total">
+                <span>Total:</span>
+                <span id="cartTotal">₹100</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>PhotoGifts</h4>
+                <p>Transform your memories into beautiful personalized gifts.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <a href="https://wa.me/919926634010" target="_blank">📱 WhatsApp: +91 99266 34010</a>
+                <a href="mailto:info@photogifts.com">📧 info@photogifts.com</a>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#" onclick="openContactModal(); return false;">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Products Data
+        const products = [
+            // Magazines
+            {
+                id: 1,
+                name: "8 Page Magazine",
+                category: "magazines",
+                price: 299,
+                desc: "8-page custom magazine with your photos and stories",
+                specs: "8 pages, A4 size, Glossy finish, High-quality print",
+                details: "Create your own magazine with 8 pages of your favorite photos, stories, and memories. Perfect for special events or personal keepsakes.",
+                badge: "Popular",
+                image: "magazine-8.jpg",
+                emoji: "📰"
+            },
+            {
+                id: 2,
+                name: "12 Page Magazine",
+                category: "magazines",
+                price: 399,
+                desc: "12-page custom magazine with premium finish",
+                specs: "12 pages, A4 size, Premium paper, Professional binding",
+                details: "A more comprehensive magazine with 12 pages to showcase your stories, photos, and memories in a professional format.",
+                badge: null,
+                image: "magazine-12.jpg",
+                emoji: "📰"
+            },
+            {
+                id: 3,
+                name: "16 Page Magazine",
+                category: "magazines",
+                price: 499,
+                desc: "16-page magazine with extensive content space",
+                specs: "16 pages, A4 size, High-quality print, Durable cover",
+                details: "Perfect for extensive photo collections or detailed stories. 16 pages provide ample space for your creative expression.",
+                badge: null,
+                image: "magazine-16.jpg",
+                emoji: "📰"
+            },
+            {
+                id: 4,
+                name: "20 Page Magazine",
+                category: "magazines",
+                price: 599,
+                desc: "20-page premium magazine with luxury finish",
+                specs: "20 pages, A4 size, Premium paper, Professional binding, Luxury cover",
+                details: "Our most comprehensive magazine option with 20 pages for extensive storytelling and photo display. Perfect for special occasions.",
+                badge: "Premium",
+                image: "magazine-20.jpg",
+                emoji: "📰"
+            },
+            
+            // Photo Frames
+            {
+                id: 5,
+                name: "A4 Photo Frame",
+                category: "frames",
+                price: 399,
+                desc: "A4 size wooden frame for your favorite photo",
+                specs: "A4 size, Wood material, Glass front, Ready to hang",
+                details: "Perfect for displaying your favorite A4-sized photos. Made with premium wood and glass front for protection.",
+                badge: "Popular",
+                image: "frame-a4.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 6,
+                name: "A5 Photo Frame",
+                category: "frames",
+                price: 299,
+                desc: "A5 size frame perfect for desk or wall",
+                specs: "A5 size, Wood material, Glass front, Versatile display",
+                details: "Ideal for smaller spaces or as part of a gallery wall. A5 size frames are perfect for desk displays or smaller wall spaces.",
+                badge: null,
+                image: "frame-a5.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 7,
+                name: "A6 Photo Frame",
+                category: "frames",
+                price: 199,
+                desc: "Compact A6 frame for small spaces",
+                specs: "A6 size, Wood material, Glass front, Compact design",
+                details: "Small but impactful. A6 frames are perfect for displaying cherished small photos in compact spaces.",
+                badge: null,
+                image: "frame-a6.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 8,
+                name: "A3 Photo Frame",
+                category: "frames",
+                price: 599,
+                desc: "Large A3 frame for statement photos",
+                specs: "A3 size, Premium wood, Glass front, Statement piece",
+                details: "Make a statement with our large A3 frames. Perfect for showcasing your most important photos as a centerpiece.",
+                badge: "Large Size",
+                image: "frame-a3.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 9,
+                name: "7x7 Square Frame",
+                category: "frames",
+                price: 249,
+                desc: "Square frame perfect for Instagram photos",
+                specs: "7x7 inch, Square format, Wood material, Modern design",
+                details: "Square frames are perfect for Instagram-style photos. The 7x7 size offers a modern, balanced look for any space.",
+                badge: "Square",
+                image: "frame-7x7.jpg",
+                emoji: "🖼️"
+            },
+            
+            // Posters
+            {
+                id: 10,
+                name: "A6 Poster (14x10 cm)",
+                category: "posters",
+                price: 99,
+                desc: "Small A6 poster perfect for small spaces",
+                specs: "A6 size, 14x10 cm, Matte finish, High-quality print",
+                details: "Small but impactful posters perfect for small spaces, notice boards, or as part of a collage.",
+                badge: "Small",
+                image: "poster-a6.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 11,
+                name: "A5 Poster (21x14 cm)",
+                category: "posters",
+                price: 149,
+                desc: "A5 size poster for medium display areas",
+                specs: "A5 size, 21x14 cm, Matte finish, Frameable",
+                details: "Versatile A5 posters that work well in various spaces. Perfect for framing or displaying as is.",
+                badge: null,
+                image: "poster-a5.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 12,
+                name: "A4 Poster (21x29 cm)",
+                category: "posters",
+                price: 199,
+                desc: "Standard A4 poster for versatile use",
+                specs: "A4 size, 21x29 cm, High-quality print, Matte/Glossy options",
+                details: "Our most popular poster size. A4 posters are versatile enough for various display options and framing.",
+                badge: "Popular",
+                image: "poster-a4.jpg",
+                emoji: "🖼️"
+            },
+            {
+                id: 13,
+                name: "A3 Poster",
+                category: "posters",
+                price: 299,
+                desc: "Large A3 poster for statement displays",
+                specs: "A3 size, Premium paper, High-resolution print, Statement piece",
+                details: "Make a bold statement with our large A3 posters. Perfect as a focal point in any room or event space.",
+                badge: "Large",
+                image: "poster-a3.jpg",
+                emoji: "🖼️"
+            },
+            
+            // Handmade Cards
+            {
+                id: 14,
+                name: "Handmade Birthday Card",
+                category: "cards",
+                price: 79,
+                desc: "Personalized handmade birthday card",
+                specs: "Handcrafted, Custom design, Premium paper, Envelope included",
+                details: "Beautiful handmade birthday cards personalized with your photos and messages. Each card is uniquely crafted.",
+                badge: "Handmade",
+                image: "card-birthday.jpg",
+                emoji: "💌"
+            },
+            {
+                id: 15,
+                name: "Handmade Anniversary Card",
+                category: "cards",
+                price: 89,
+                desc: "Elegant handmade anniversary card",
+                specs: "Handcrafted, Elegant design, Premium materials, Envelope included",
+                details: "Celebrate special anniversaries with our elegant handmade cards. Personalized with your photos and heartfelt messages.",
+                badge: "Handmade",
+                image: "card-anniversary.jpg",
+                emoji: "💌"
+            },
+            {
+                id: 16,
+                name: "Handmade Wedding Card",
+                category: "cards",
+                price: 99,
+                desc: "Luxury handmade wedding invitation card",
+                specs: "Handcrafted, Luxury materials, Custom design, Envelope included",
+                details: "Make your wedding invitations extra special with our luxury handmade cards. Each card is crafted with attention to detail.",
+                badge: "Premium",
+                image: "card-wedding.jpg",
+                emoji: "💌"
+            },
+            
+            // Polaroid Photos
+            {
+                id: 17,
+                name: "Single Polaroid Photo",
+                category: "polaroid",
+                price: 49,
+                desc: "Single polaroid-style photo print",
+                specs: "Polaroid style, 3.5x4.2 inch, Matte finish, Instant look",
+                details: "Capture moments in classic polaroid style. Each print has the distinctive white border and retro appeal.",
+                badge: "Single",
+                image: "polaroid-1.jpg",
+                emoji: "📸"
+            },
+            {
+                id: 18,
+                name: "Double Polaroid Set",
+                category: "polaroid",
+                price: 89,
+                desc: "Set of 2 polaroid-style photos",
+                specs: "2 polaroid prints, 3.5x4.2 inch each, Matte finish, Perfect pair",
+                details: "A set of two polaroid-style photos, perfect for displaying related moments or creating a small collection.",
+                badge: "Set of 2",
+                image: "polaroid-2.jpg",
+                emoji: "📸"
+            },
+            
+            // Photobooth
+            {
+                id: 19,
+                name: "3-Photo Photobooth Strip",
+                category: "photobooth",
+                price: 129,
+                desc: "Photobooth strip with 3 photos",
+                specs: "3 photos on one strip, Classic photobooth style, 2x6 inch, High-quality print",
+                details: "Recreate the classic photobooth experience with a strip of 3 photos. Perfect for events, parties, or fun photoshoots.",
+                badge: "3 Photos",
+                image: "photobooth-3.jpg",
+                emoji: "📸"
+            },
+            {
+                id: 20,
+                name: "4-Photo Photobooth Strip",
+                category: "photobooth",
+                price: 159,
+                desc: "Photobooth strip with 4 photos",
+                specs: "4 photos on one strip, Classic photobooth style, 2x8 inch, High-quality print",
+                details: "The ultimate photobooth experience with a strip of 4 photos. More space for creative poses and expressions.",
+                badge: "4 Photos",
+                image: "photobooth-4.jpg",
+                emoji: "📸"
+            },
+            
+            // E-Invitations
+            {
+                id: 21,
+                name: "Wedding E-Invitation",
+                category: "invitations",
+                price: 199,
+                desc: "Elegant digital wedding invitation",
+                specs: "Digital format, Custom design, Shareable link, RSVP tracking",
+                details: "Beautiful digital wedding invitations that can be easily shared via WhatsApp, email, or social media. Includes RSVP tracking.",
+                badge: "Wedding",
+                image: "invitation-wedding.jpg",
+                emoji: "💒"
+            },
+            {
+                id: 22,
+                name: "Birthday E-Invitation",
+                category: "invitations",
+                price: 99,
+                desc: "Fun digital birthday invitation",
+                specs: "Digital format, Fun designs, Customizable, Easy sharing",
+                details: "Make birthday celebrations more fun with personalized digital invitations. Easy to share with all your guests.",
+                badge: "Birthday",
+                image: "invitation-birthday.jpg",
+                emoji: "🎂"
+            },
+            {
+                id: 23,
+                name: "Anniversary E-Invitation",
+                category: "invitations",
+                price: 149,
+                desc: "Elegant anniversary e-invitation",
+                specs: "Digital format, Elegant designs, Custom text, Shareable",
+                details: "Celebrate special anniversaries with elegant digital invitations that reflect the importance of the occasion.",
+                badge: "Anniversary",
+                image: "invitation-anniversary.jpg",
+                emoji: "💑"
+            },
+            
+        ];
+
+        // Cart State
+        let cart = [];
+        let currentFilter = 'all';
+        const DELIVERY_CHARGE = 100;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+        });
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const filteredProducts = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+            
+            grid.innerHTML = filteredProducts.map(product => `
+                <div class="product-card" onclick="openProductModal(${product.id})">
+                    <div class="product-image">
+                        <img src="images/products/${product.image}" alt="${product.name}" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${getCategoryName(product.category)}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        <div class="product-price">₹${product.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update active category button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Render filtered products with smooth transition
+            const grid = document.getElementById('productsGrid');
+            grid.style.opacity = '0';
+            
+            setTimeout(() => {
+                renderProducts();
+                grid.style.transition = 'opacity 0.3s';
+                grid.style.opacity = '1';
+                
+                // Scroll to products section smoothly
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 150);
+        }
+
+        // Search Products
+        function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const grid = document.getElementById('productsGrid');
+            
+            let filtered = products;
+            if (currentFilter !== 'all') {
+                filtered = products.filter(p => p.category === currentFilter);
+            }
+            
+            if (searchTerm) {
+                filtered = filtered.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm) || 
+                    p.desc.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card" onclick="openProductModal(${product.id})">
+                    <div class="product-image">
+                        <img src="images/products/${product.image}" alt="${product.name}" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${getCategoryName(product.category)}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        <div class="product-price">₹${product.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Get Category Name
+        function getCategoryName(category) {
+            const names = {
+                'magazines': 'Magazines',
+                'frames': 'Photo Frames',
+                'posters': 'Posters',
+                'cards': 'Handmade Cards',
+                'polaroid': 'Polaroid Photos',
+                'photobooth': 'Photobooth',
+                'invitations': 'E-Invitations',
+            };
+            return names[category] || category;
+        }
+
+        // Open Product Modal
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modalBody = document.getElementById('productModalBody');
+            modalBody.innerHTML = `
+                <div class="product-detail-grid">
+                    <div class="product-detail-image">
+                        <img src="images/products/${product.image}" alt="${product.name}" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                    </div>
+                    <div class="product-detail-info">
+                        <div class="category">${getCategoryName(product.category)}</div>
+                        <h2>${product.name}</h2>
+                        <div class="price">₹${product.price}</div>
+                        <p class="description">${product.details}</p>
+                        <div class="specs">
+                            <h4>Specifications</h4>
+                            <p>${product.specs}</p>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 12px;" onclick="addToCart(${product.id}); closeProductModal();">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="sample-images">
+                    <h3>Sample Images</h3>
+                    <div class="sample-grid">
+                        <div class="sample-item">
+                            <img src="images/samples/${product.image.replace('.jpg', '-1.jpg')}" alt="Sample 1" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        </div>
+                        <div class="sample-item">
+                            <img src="images/samples/${product.image.replace('.jpg', '-2.jpg')}" alt="Sample 2" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        </div>
+                        <div class="sample-item">
+                            <img src="images/samples/${product.image.replace('.jpg', '-3.jpg')}" alt="Sample 3" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        </div>
+                        <div class="sample-item">
+                            <img src="images/samples/${product.image.replace('.jpg', '-4.jpg')}" alt="Sample 4" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="emoji-fallback" style="display:none;">${product.emoji}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        // Contact Modal
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            const whatsappMessage = `Hello! I'm ${name}%0A%0AEmail: ${email}%0APhone: ${phone}%0A%0AMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/919926634010?text=${whatsappMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            closeContactModal();
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCart();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalPrice = subtotal + DELIVERY_CHARGE;
+            
+            cartCount.textContent = totalItems;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.emoji}</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">₹${item.price} × ${item.quantity}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">×</button>
+                    </div>
+                `).join('');
+                cartFooter.style.display = 'block';
+                cartSubtotal.textContent = `₹${subtotal}`;
+                cartTotal.textContent = `₹${totalPrice}`;
+            }
+        }
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            drawer.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Checkout
+        function proceedToCheckout() {
+            toggleCart();
+            document.getElementById('checkoutModal').classList.add('active');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.remove('active');
+        }
+
+        function submitCheckout(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('checkoutName').value;
+            const phone = document.getElementById('checkoutPhone').value;
+            const address = document.getElementById('checkoutAddress').value;
+            
+            let orderItems = cart.map(item => `${item.name} (₹${item.price}) × ${item.quantity}`).join('%0A');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalPrice = subtotal + DELIVERY_CHARGE;
+            
+            const whatsappMessage = `New Order from ${name}%0A%0APhone: ${phone}%0AAddress: ${address}%0A%0AOrder Details:%0A${orderItems}%0A%0ASubtotal: ₹${subtotal}%0ADelivery Charge: ₹${DELIVERY_CHARGE}%0ATotal: ₹${totalPrice}`;
+            const whatsappUrl = `https://wa.me/919926634010?text=${whatsappMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Clear cart
+            cart = [];
+            updateCart();
+            closeCheckoutModal();
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Close modals on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
