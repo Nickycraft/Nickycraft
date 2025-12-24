@@ -31,13 +31,21 @@
             --color-brown-600-rgb: 94, 82, 64;
             --color-teal-500-rgb: 33, 128, 141;
             --color-slate-900-rgb: 19, 52, 59;
+            
+            /* New Purple Color Scheme */
+            --color-purple-400: rgba(160, 130, 220, 1);
+            --color-purple-500: rgba(138, 110, 200, 1);
+            --color-purple-600: rgba(118, 95, 180, 1);
+            --color-purple-700: rgba(98, 80, 160, 1);
+            --color-purple-light: rgba(210, 190, 245, 1);
+            
             --color-background: var(--color-cream-50);
             --color-surface: var(--color-cream-100);
             --color-text: var(--color-slate-900);
             --color-text-secondary: var(--color-slate-500);
-            --color-primary: var(--color-teal-500);
-            --color-primary-hover: var(--color-teal-600);
-            --color-primary-active: var(--color-teal-700);
+            --color-primary: var(--color-purple-500); /* Changed to purple */
+            --color-primary-hover: var(--color-purple-600);
+            --color-primary-active: var(--color-purple-700);
             --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
             --color-border: rgba(var(--color-brown-600-rgb), 0.2);
             --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
@@ -163,9 +171,13 @@
             font-weight: 600;
         }
 
-        /* Hero Section */
+        /* Hero Section - Updated with purple gradient */
         .hero {
-            background: linear-gradient(135deg, rgba(33, 128, 141, 0.1) 0%, rgba(50, 184, 198, 0.05) 100%);
+            background: linear-gradient(
+                135deg,
+                rgba(160, 130, 220, 0.28) 0%,
+                rgba(210, 190, 245, 0.20) 100%
+            );
             padding: var(--space-32) var(--space-16);
         }
 
@@ -340,7 +352,7 @@
         .product-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            background: linear-gradient(135deg, rgba(160, 130, 220, 0.05) 0%, rgba(210, 190, 245, 0.03) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -481,7 +493,7 @@
         .product-detail-image {
             width: 100%;
             aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            background: linear-gradient(135deg, rgba(160, 130, 220, 0.05) 0%, rgba(210, 190, 245, 0.03) 100%);
             border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
@@ -511,13 +523,6 @@
             margin-bottom: var(--space-16);
         }
 
-        .product-detail-info .price {
-            font-size: var(--font-size-3xl);
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: var(--space-16);
-        }
-
         .product-detail-info .description {
             font-size: var(--font-size-base);
             color: var(--color-text-secondary);
@@ -542,6 +547,194 @@
             color: var(--color-text-secondary);
         }
 
+        /* Customization Options */
+        .customization-options {
+            margin-top: var(--space-16);
+            padding-top: var(--space-16);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .customization-options h4 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-12);
+        }
+
+        .option-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .option-group label {
+            display: block;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-8);
+            font-weight: 500;
+        }
+
+        .option-select {
+            width: 100%;
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            background: white;
+            cursor: pointer;
+        }
+
+        .option-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+
+        .size-option {
+            flex: 1;
+            min-width: 80px;
+            padding: var(--space-12) var(--space-8);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .size-option:hover {
+            border-color: var(--color-primary);
+        }
+
+        .size-option.selected {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .size-option .size-label {
+            font-weight: 600;
+            font-size: var(--font-size-base);
+        }
+
+        .size-option .size-price {
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-4);
+        }
+
+        .price-display {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: var(--space-16) 0;
+            padding: var(--space-12);
+            background: var(--color-secondary);
+            border-radius: var(--radius-base);
+            text-align: center;
+        }
+
+        /* Share Options */
+        .share-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+            margin-top: var(--space-16);
+            padding-top: var(--space-16);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .share-options h4 {
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-8);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: var(--space-8) var(--space-12);
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            font-size: var(--font-size-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+            transition: all 0.3s;
+            color: var(--color-text);
+        }
+
+        .share-btn:hover {
+            background: rgba(var(--color-brown-600-rgb), 0.2);
+            transform: translateY(-2px);
+        }
+
+        .share-btn.whatsapp {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
+        }
+
+        .share-btn.whatsapp:hover {
+            background: #128C7E;
+        }
+
+        .share-btn.facebook {
+            background: #1877F2;
+            color: white;
+            border-color: #1877F2;
+        }
+
+        .share-btn.facebook:hover {
+            background: #0C63D4;
+        }
+
+        .share-btn.twitter {
+            background: #1DA1F2;
+            color: white;
+            border-color: #1DA1F2;
+        }
+
+        .share-btn.twitter:hover {
+            background: #0C8BD9;
+        }
+
+        .share-btn.copy {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .share-btn.copy:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: white;
+            padding: var(--space-12) var(--space-20);
+            border-radius: var(--radius-base);
+            z-index: 1000;
+            animation: fadeInOut 2s ease;
+            display: none;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+        }
+
         .sample-images {
             margin-top: var(--space-32);
         }
@@ -559,7 +752,7 @@
 
         .sample-item {
             aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(33, 128, 141, 0.05) 0%, rgba(50, 184, 198, 0.03) 100%);
+            background: linear-gradient(135deg, rgba(160, 130, 220, 0.05) 0%, rgba(210, 190, 245, 0.03) 100%);
             border-radius: var(--radius-base);
             display: flex;
             align-items: center;
@@ -656,6 +849,12 @@
 
         .cart-item-name {
             font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+
+        .cart-item-details {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
             margin-bottom: var(--space-4);
         }
 
@@ -810,6 +1009,18 @@
 
             .modal-body {
                 padding: var(--space-16);
+            }
+
+            .share-buttons {
+                flex-direction: column;
+            }
+
+            .share-btn {
+                justify-content: center;
+            }
+
+            .size-options {
+                flex-direction: column;
             }
         }
 
@@ -1000,6 +1211,9 @@
         </div>
     </div>
 
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">Link copied to clipboard!</div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
@@ -1010,6 +1224,7 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <a href="https://wa.me/919926634010" target="_blank">📱 WhatsApp: +91 99266 34010</a>
+                <a href="mailto:info@photogifts.com">📧 info@photogifts.com</a>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -1027,263 +1242,175 @@
     </footer>
 
     <script>
-        // Products Data
+        // Products Data - Simplified with customization options
         const products = [
-            // Magazines
+            // Magazines (One product with page options)
             {
                 id: 1,
-                name: "8 Page Magazine",
+                name: "Custom Magazine",
                 category: "magazines",
-                price: 299,
-                desc: "8-page custom magazine with your photos and stories",
-                specs: "8 pages, A4 size, Glossy finish, High-quality print",
-                details: "Create your own magazine with 8 pages of your favorite photos, stories, and memories. Perfect for special events or personal keepsakes.",
+                basePrice: 299,
+                desc: "Create your own personalized magazine with your photos and stories",
+                specs: "A4 size, Glossy finish, High-quality print, Professional binding",
+                details: "Create your own magazine with your favorite photos, stories, and memories. Perfect for special events or personal keepsakes. Choose the number of pages that fits your story.",
                 badge: "Popular",
-                image: "magazine-8.jpg",
-                emoji: "📰"
+                image: "magazine-custom.jpg",
+                emoji: "📰",
+                customizable: true,
+                options: [
+                    {
+                        label: "Pages",
+                        type: "select",
+                        key: "pages",
+                        options: [
+                            { label: "8 Pages", value: "8", price: 299 },
+                            { label: "12 Pages", value: "12", price: 399 },
+                            { label: "16 Pages", value: "16", price: 499 },
+                            { label: "20 Pages", value: "20", price: 599 }
+                        ]
+                    }
+                ]
             },
+            
+            // Photo Frames (One product with size options)
             {
                 id: 2,
-                name: "12 Page Magazine",
-                category: "magazines",
-                price: 399,
-                desc: "12-page custom magazine with premium finish",
-                specs: "12 pages, A4 size, Premium paper, Professional binding",
-                details: "A more comprehensive magazine with 12 pages to showcase your stories, photos, and memories in a professional format.",
+                name: "Custom Photo Frame",
+                category: "frames",
+                basePrice: 199,
+                desc: "Display your favorite photos in beautiful custom frames",
+                specs: "Wood material, Glass front, Ready to hang, High-quality finish",
+                details: "Perfect for displaying your favorite photos. Made with premium wood and glass front for protection. Choose the size that fits your space.",
                 badge: null,
-                image: "magazine-12.jpg",
-                emoji: "📰"
+                image: "frame-custom.jpg",
+                emoji: "🖼️",
+                customizable: true,
+                options: [
+                    {
+                        label: "Size",
+                        type: "select",
+                        key: "size",
+                        options: [
+                            { label: "A6", value: "a6", price: 199 },
+                            { label: "A5", value: "a5", price: 299 },
+                            { label: "A4", value: "a4", price: 399 },
+                            { label: "A3", value: "a3", price: 599 },
+                            { label: "7x7 Square", value: "7x7", price: 249 }
+                        ]
+                    }
+                ]
             },
+            
+            // Posters (One product with size options)
             {
                 id: 3,
-                name: "16 Page Magazine",
-                category: "magazines",
-                price: 499,
-                desc: "16-page magazine with extensive content space",
-                specs: "16 pages, A4 size, High-quality print, Durable cover",
-                details: "Perfect for extensive photo collections or detailed stories. 16 pages provide ample space for your creative expression.",
+                name: "Custom Poster",
+                category: "posters",
+                basePrice: 99,
+                desc: "High-quality custom posters for your photos",
+                specs: "Matte finish, High-quality print, Durable paper, Vibrant colors",
+                details: "Transform your favorite photos into beautiful posters. Perfect for home decor, events, or as gifts. Choose the size that suits your needs.",
                 badge: null,
-                image: "magazine-16.jpg",
-                emoji: "📰"
+                image: "poster-custom.jpg",
+                emoji: "🖼️",
+                customizable: true,
+                options: [
+                    {
+                        label: "Size",
+                        type: "select",
+                        key: "size",
+                        options: [
+                            { label: "A6 (14x10 cm)", value: "a6", price: 99 },
+                            { label: "A5 (21x14 cm)", value: "a5", price: 149 },
+                            { label: "A4 (21x29 cm)", value: "a4", price: 199 },
+                            { label: "A3", value: "a3", price: 299 }
+                        ]
+                    }
+                ]
             },
+            
+            // Handmade Cards (One product with type options)
             {
                 id: 4,
-                name: "20 Page Magazine",
-                category: "magazines",
-                price: 599,
-                desc: "20-page premium magazine with luxury finish",
-                specs: "20 pages, A4 size, Premium paper, Professional binding, Luxury cover",
-                details: "Our most comprehensive magazine option with 20 pages for extensive storytelling and photo display. Perfect for special occasions.",
-                badge: "Premium",
-                image: "magazine-20.jpg",
-                emoji: "📰"
+                name: "Handmade Card",
+                category: "cards",
+                basePrice: 79,
+                desc: "Personalized handmade cards for special occasions",
+                specs: "Handcrafted, Custom design, Premium paper, Envelope included",
+                details: "Beautiful handmade cards personalized with your photos and messages. Each card is uniquely crafted for your special occasion.",
+                badge: "Handmade",
+                image: "card-custom.jpg",
+                emoji: "💌",
+                customizable: true,
+                options: [
+                    {
+                        label: "Occasion",
+                        type: "select",
+                        key: "occasion",
+                        options: [
+                            { label: "Birthday", value: "birthday", price: 79 },
+                            { label: "Anniversary", value: "anniversary", price: 89 },
+                            { label: "Wedding", value: "wedding", price: 99 }
+                        ]
+                    }
+                ]
             },
             
-            // Photo Frames
+            // Polaroid Photos (One product with quantity options)
             {
                 id: 5,
-                name: "A4 Photo Frame",
-                category: "frames",
-                price: 399,
-                desc: "A4 size wooden frame for your favorite photo",
-                specs: "A4 size, Wood material, Glass front, Ready to hang",
-                details: "Perfect for displaying your favorite A4-sized photos. Made with premium wood and glass front for protection.",
-                badge: "Popular",
-                image: "frame-a4.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 6,
-                name: "A5 Photo Frame",
-                category: "frames",
-                price: 299,
-                desc: "A5 size frame perfect for desk or wall",
-                specs: "A5 size, Wood material, Glass front, Versatile display",
-                details: "Ideal for smaller spaces or as part of a gallery wall. A5 size frames are perfect for desk displays or smaller wall spaces.",
-                badge: null,
-                image: "frame-a5.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 7,
-                name: "A6 Photo Frame",
-                category: "frames",
-                price: 199,
-                desc: "Compact A6 frame for small spaces",
-                specs: "A6 size, Wood material, Glass front, Compact design",
-                details: "Small but impactful. A6 frames are perfect for displaying cherished small photos in compact spaces.",
-                badge: null,
-                image: "frame-a6.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 8,
-                name: "A3 Photo Frame",
-                category: "frames",
-                price: 599,
-                desc: "Large A3 frame for statement photos",
-                specs: "A3 size, Premium wood, Glass front, Statement piece",
-                details: "Make a statement with our large A3 frames. Perfect for showcasing your most important photos as a centerpiece.",
-                badge: "Large Size",
-                image: "frame-a3.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 9,
-                name: "7x7 Square Frame",
-                category: "frames",
-                price: 249,
-                desc: "Square frame perfect for Instagram photos",
-                specs: "7x7 inch, Square format, Wood material, Modern design",
-                details: "Square frames are perfect for Instagram-style photos. The 7x7 size offers a modern, balanced look for any space.",
-                badge: "Square",
-                image: "frame-7x7.jpg",
-                emoji: "🖼️"
-            },
-            
-            // Posters
-            {
-                id: 10,
-                name: "A6 Poster (14x10 cm)",
-                category: "posters",
-                price: 99,
-                desc: "Small A6 poster perfect for small spaces",
-                specs: "A6 size, 14x10 cm, Matte finish, High-quality print",
-                details: "Small but impactful posters perfect for small spaces, notice boards, or as part of a collage.",
-                badge: "Small",
-                image: "poster-a6.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 11,
-                name: "A5 Poster (21x14 cm)",
-                category: "posters",
-                price: 149,
-                desc: "A5 size poster for medium display areas",
-                specs: "A5 size, 21x14 cm, Matte finish, Frameable",
-                details: "Versatile A5 posters that work well in various spaces. Perfect for framing or displaying as is.",
-                badge: null,
-                image: "poster-a5.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 12,
-                name: "A4 Poster (21x29 cm)",
-                category: "posters",
-                price: 199,
-                desc: "Standard A4 poster for versatile use",
-                specs: "A4 size, 21x29 cm, High-quality print, Matte/Glossy options",
-                details: "Our most popular poster size. A4 posters are versatile enough for various display options and framing.",
-                badge: "Popular",
-                image: "poster-a4.jpg",
-                emoji: "🖼️"
-            },
-            {
-                id: 13,
-                name: "A3 Poster",
-                category: "posters",
-                price: 299,
-                desc: "Large A3 poster for statement displays",
-                specs: "A3 size, Premium paper, High-resolution print, Statement piece",
-                details: "Make a bold statement with our large A3 posters. Perfect as a focal point in any room or event space.",
-                badge: "Large",
-                image: "poster-a3.jpg",
-                emoji: "🖼️"
-            },
-            
-            // Handmade Cards
-            {
-                id: 14,
-                name: "Handmade Birthday Card",
-                category: "cards",
-                price: 79,
-                desc: "Personalized handmade birthday card",
-                specs: "Handcrafted, Custom design, Premium paper, Envelope included",
-                details: "Beautiful handmade birthday cards personalized with your photos and messages. Each card is uniquely crafted.",
-                badge: "Handmade",
-                image: "card-birthday.jpg",
-                emoji: "💌"
-            },
-            {
-                id: 15,
-                name: "Handmade Anniversary Card",
-                category: "cards",
-                price: 89,
-                desc: "Elegant handmade anniversary card",
-                specs: "Handcrafted, Elegant design, Premium materials, Envelope included",
-                details: "Celebrate special anniversaries with our elegant handmade cards. Personalized with your photos and heartfelt messages.",
-                badge: "Handmade",
-                image: "card-anniversary.jpg",
-                emoji: "💌"
-            },
-            {
-                id: 16,
-                name: "Handmade Wedding Card",
-                category: "cards",
-                price: 99,
-                desc: "Luxury handmade wedding invitation card",
-                specs: "Handcrafted, Luxury materials, Custom design, Envelope included",
-                details: "Make your wedding invitations extra special with our luxury handmade cards. Each card is crafted with attention to detail.",
-                badge: "Premium",
-                image: "card-wedding.jpg",
-                emoji: "💌"
-            },
-            
-            // Polaroid Photos
-            {
-                id: 17,
-                name: "Single Polaroid Photo",
+                name: "Polaroid Photos",
                 category: "polaroid",
-                price: 49,
-                desc: "Single polaroid-style photo print",
+                basePrice: 49,
+                desc: "Classic polaroid-style photo prints",
                 specs: "Polaroid style, 3.5x4.2 inch, Matte finish, Instant look",
                 details: "Capture moments in classic polaroid style. Each print has the distinctive white border and retro appeal.",
-                badge: "Single",
-                image: "polaroid-1.jpg",
-                emoji: "📸"
-            },
-            {
-                id: 18,
-                name: "Double Polaroid Set",
-                category: "polaroid",
-                price: 89,
-                desc: "Set of 2 polaroid-style photos",
-                specs: "2 polaroid prints, 3.5x4.2 inch each, Matte finish, Perfect pair",
-                details: "A set of two polaroid-style photos, perfect for displaying related moments or creating a small collection.",
-                badge: "Set of 2",
-                image: "polaroid-2.jpg",
-                emoji: "📸"
-            },
-            
-            // Photobooth
-            {
-                id: 19,
-                name: "3-Photo Photobooth Strip",
-                category: "photobooth",
-                price: 129,
-                desc: "Photobooth strip with 3 photos",
-                specs: "3 photos on one strip, Classic photobooth style, 2x6 inch, High-quality print",
-                details: "Recreate the classic photobooth experience with a strip of 3 photos. Perfect for events, parties, or fun photoshoots.",
-                badge: "3 Photos",
-                image: "photobooth-3.jpg",
-                emoji: "📸"
-            },
-            {
-                id: 20,
-                name: "4-Photo Photobooth Strip",
-                category: "photobooth",
-                price: 159,
-                desc: "Photobooth strip with 4 photos",
-                specs: "4 photos on one strip, Classic photobooth style, 2x8 inch, High-quality print",
-                details: "The ultimate photobooth experience with a strip of 4 photos. More space for creative poses and expressions.",
-                badge: "4 Photos",
-                image: "photobooth-4.jpg",
-                emoji: "📸"
+                badge: null,
+                image: "polaroid-custom.jpg",
+                emoji: "📸",
+                customizable: true,
+                options: [
+                    {
+                        label: "Quantity",
+                        type: "select",
+                        key: "quantity",
+                        options: [
+                            { label: "1 Photo", value: "1", price: 49 },
+                            { label: "2 Photos", value: "2", price: 89 }
+                        ]
+                    }
+                ]
             },
             
-            // E-Invitations
+            // Photobooth (One product with photo count options)
             {
-                id: 21,
+                id: 6,
+                name: "Photobooth Strip",
+                category: "photobooth",
+                basePrice: 129,
+                desc: "Classic photobooth style photo strips",
+                specs: "Classic photobooth style, High-quality print, Durable paper",
+                details: "Recreate the classic photobooth experience with photo strips. Perfect for events, parties, or fun photoshoots.",
+                badge: null,
+                image: "photobooth-custom.jpg",
+                emoji: "📸",
+                customizable: true,
+                options: [
+                    {
+                        label: "Photos per Strip",
+                        type: "select",
+                        key: "photos",
+                        options: [
+                            { label: "3 Photos", value: "3", price: 129 },
+                            { label: "4 Photos", value: "4", price: 159 }
+                        ]
+                    }
+                ]
+            },
+            
+            // E-Invitations (Multiple products as before)
+            {
+                id: 7,
                 name: "Wedding E-Invitation",
                 category: "invitations",
                 price: 199,
@@ -1292,10 +1419,11 @@
                 details: "Beautiful digital wedding invitations that can be easily shared via WhatsApp, email, or social media. Includes RSVP tracking.",
                 badge: "Wedding",
                 image: "invitation-wedding.jpg",
-                emoji: "💒"
+                emoji: "💒",
+                customizable: false
             },
             {
-                id: 22,
+                id: 8,
                 name: "Birthday E-Invitation",
                 category: "invitations",
                 price: 99,
@@ -1304,10 +1432,11 @@
                 details: "Make birthday celebrations more fun with personalized digital invitations. Easy to share with all your guests.",
                 badge: "Birthday",
                 image: "invitation-birthday.jpg",
-                emoji: "🎂"
+                emoji: "🎂",
+                customizable: false
             },
             {
-                id: 23,
+                id: 9,
                 name: "Anniversary E-Invitation",
                 category: "invitations",
                 price: 149,
@@ -1316,7 +1445,8 @@
                 details: "Celebrate special anniversaries with elegant digital invitations that reflect the importance of the occasion.",
                 badge: "Anniversary",
                 image: "invitation-anniversary.jpg",
-                emoji: "💑"
+                emoji: "💑",
+                customizable: false
             },
             
         ];
@@ -1325,6 +1455,8 @@
         let cart = [];
         let currentFilter = 'all';
         const DELIVERY_CHARGE = 100;
+        let currentProductForShare = null;
+        let currentCustomizations = {};
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
@@ -1350,7 +1482,7 @@
                         <div class="product-category">${getCategoryName(product.category)}</div>
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-desc">${product.desc}</p>
-                        <div class="product-price">₹${product.price}</div>
+                        <div class="product-price">${product.customizable ? `Starting from ₹${product.basePrice}` : `₹${product.price}`}</div>
                     </div>
                 </div>
             `).join('');
@@ -1409,7 +1541,7 @@
                         <div class="product-category">${getCategoryName(product.category)}</div>
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-desc">${product.desc}</p>
-                        <div class="product-price">₹${product.price}</div>
+                        <div class="product-price">${product.customizable ? `Starting from ₹${product.basePrice}` : `₹${product.price}`}</div>
                     </div>
                 </div>
             `).join('');
@@ -1434,7 +1566,47 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
+            currentProductForShare = product;
+            currentCustomizations = {};
+            
+            // Reset customizations for this product
+            if (product.customizable && product.options) {
+                product.options.forEach(option => {
+                    if (option.options && option.options.length > 0) {
+                        currentCustomizations[option.key] = option.options[0];
+                    }
+                });
+            }
+            
             const modalBody = document.getElementById('productModalBody');
+            let customizationHTML = '';
+            
+            if (product.customizable && product.options) {
+                customizationHTML = `
+                    <div class="customization-options">
+                        <h4>Customize Your Order</h4>
+                        ${product.options.map(option => {
+                            if (option.type === 'select') {
+                                return `
+                                    <div class="option-group">
+                                        <label>${option.label}</label>
+                                        <select class="option-select" onchange="updateCustomization('${option.key}', this.value, ${productId})">
+                                            ${option.options.map(opt => `
+                                                <option value="${opt.value}">${opt.label} - ₹${opt.price}</option>
+                                            `).join('')}
+                                        </select>
+                                    </div>
+                                `;
+                            }
+                            return '';
+                        }).join('')}
+                        <div class="price-display" id="dynamicPrice">
+                            Total: ₹${product.customizable ? product.basePrice : product.price}
+                        </div>
+                    </div>
+                `;
+            }
+            
             modalBody.innerHTML = `
                 <div class="product-detail-grid">
                     <div class="product-detail-image">
@@ -1445,13 +1617,34 @@
                     <div class="product-detail-info">
                         <div class="category">${getCategoryName(product.category)}</div>
                         <h2>${product.name}</h2>
-                        <div class="price">₹${product.price}</div>
                         <p class="description">${product.details}</p>
                         <div class="specs">
                             <h4>Specifications</h4>
                             <p>${product.specs}</p>
                         </div>
-                        <button class="btn btn-primary" style="width: 100%; margin-bottom: 12px;" onclick="addToCart(${product.id}); closeProductModal();">Add to Cart</button>
+                        ${customizationHTML}
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 12px;" onclick="addToCart(${product.id})">
+                            ${product.customizable ? 'Add to Cart with Selected Options' : 'Add to Cart'}
+                        </button>
+                        
+                        <!-- Share Options -->
+                        <div class="share-options">
+                            <h4>Share this product with friends:</h4>
+                            <div class="share-buttons">
+                                <button class="share-btn whatsapp" onclick="shareProduct('whatsapp', ${product.id})">
+                                    <span>WhatsApp</span>
+                                </button>
+                                <button class="share-btn facebook" onclick="shareProduct('facebook', ${product.id})">
+                                    <span>Facebook</span>
+                                </button>
+                                <button class="share-btn twitter" onclick="shareProduct('twitter', ${product.id})">
+                                    <span>Twitter</span>
+                                </button>
+                                <button class="share-btn copy" onclick="shareProduct('copy', ${product.id})">
+                                    <span>Copy Link</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="sample-images">
@@ -1484,8 +1677,98 @@
             document.getElementById('productModal').classList.add('active');
         }
 
+        // Update customization selection
+        function updateCustomization(key, value, productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product || !product.customizable) return;
+            
+            const option = product.options.find(o => o.key === key);
+            if (!option) return;
+            
+            const selectedOption = option.options.find(o => o.value === value);
+            if (!selectedOption) return;
+    
+            currentCustomizations[key] = selectedOption;
+            
+            // Calculate and update price
+            let totalPrice = product.basePrice;
+            Object.values(currentCustomizations).forEach(opt => {
+                totalPrice = opt.price; // Use the price from selected option
+            });
+            
+            document.getElementById('dynamicPrice').textContent = `Total: ₹${totalPrice}`;
+        }
+
         function closeProductModal() {
             document.getElementById('productModal').classList.remove('active');
+            currentProductForShare = null;
+            currentCustomizations = {};
+        }
+
+        // Share Product Function
+        function shareProduct(platform, productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const productName = encodeURIComponent(product.name);
+            const productDesc = encodeURIComponent(product.desc);
+            const websiteLink = encodeURIComponent(window.location.href.split('#')[0] + '#product-' + productId);
+            
+            let shareUrl = '';
+            let shareText = '';
+            
+            switch(platform) {
+                case 'whatsapp':
+                    shareText = `Check out this amazing product from PhotoGifts!%0A%0A✨ *${product.name}* ✨%0A%0A📋 *Description:* ${product.desc}%0A${product.customizable ? '💰 *Starting from:* ' : '💰 *Price:* '}${product.customizable ? `₹${product.basePrice}` : `₹${product.price}`}%0A📁 *Category:* ${getCategoryName(product.category)}%0A%0A👉 View it here: ${window.location.href.split('#')[0]}#product-${productId}%0A%0AShop more personalized gifts at PhotoGifts! 🎁`;
+                    shareUrl = `https://wa.me/?text=${shareText}`;
+                    window.open(shareUrl, '_blank');
+                    break;
+                    
+                case 'facebook':
+                    shareText = `Check out ${product.name} from PhotoGifts! ${product.desc} ${product.customizable ? `Starting from ₹${product.basePrice}` : `Only ₹${product.price}`}!`;
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${websiteLink}&quote=${shareText}`;
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                    break;
+                    
+                case 'twitter':
+                    shareText = `Check out ${product.name} from @PhotoGifts! ${product.desc} ${product.customizable ? `Starting from ₹${product.basePrice}` : `Only ₹${product.price}`}!`;
+                    shareUrl = `https://twitter.com/intent/tweet?text=${shareText}&url=${websiteLink}`;
+                    window.open(shareUrl, '_blank', 'width=600,height=400');
+                    break;
+                    
+                case 'copy':
+                    const shareContent = `PhotoGifts - ${product.name}\n\n${product.desc}\n\n${product.customizable ? `Starting from: ₹${product.basePrice}` : `Price: ₹${product.price}`}\nCategory: ${getCategoryName(product.category)}\n\nView product: ${window.location.href.split('#')[0]}#product-${productId}\n\nShop personalized gifts at PhotoGifts!`;
+                    
+                    // Copy to clipboard
+                    if (navigator.clipboard && window.isSecureContext) {
+                        navigator.clipboard.writeText(shareContent).then(() => {
+                            showCopyNotification();
+                        });
+                    } else {
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea');
+                        textArea.value = shareContent;
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            showCopyNotification();
+                        } catch (err) {
+                            console.error('Failed to copy: ', err);
+                        }
+                        document.body.removeChild(textArea);
+                    }
+                    break;
+            }
+        }
+
+        function showCopyNotification() {
+            const notification = document.getElementById('copyNotification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
         }
 
         // Contact Modal
@@ -1520,14 +1803,43 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity++;
+            let cartItem = { ...product };
+            let price = product.customizable ? product.basePrice : product.price;
+            let details = '';
+            
+            if (product.customizable && Object.keys(currentCustomizations).length > 0) {
+                // Build details string from customizations
+                details = Object.values(currentCustomizations).map(opt => {
+                    const optionConfig = product.options.find(o => o.options.includes(opt));
+                    return `${optionConfig ? optionConfig.label : 'Option'}: ${opt.label}`;
+                }).join(', ');
+                
+                // Use price from the last selected option
+                const lastOption = Object.values(currentCustomizations).pop();
+                price = lastOption.price;
+                
+                cartItem.customDetails = details;
+            }
+            
+            cartItem.finalPrice = price;
+            cartItem.displayName = product.customizable ? 
+                `${product.name} (${details || 'Standard'})` : 
+                product.name;
+            
+            const existingItemIndex = cart.findIndex(item => 
+                item.id === productId && 
+                item.customDetails === (cartItem.customDetails || '')
+            );
+            
+            if (existingItemIndex > -1) {
+                cart[existingItemIndex].quantity++;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cartItem.quantity = 1;
+                cart.push(cartItem);
             }
             
             updateCart();
+            closeProductModal();
         }
 
         function removeFromCart(productId) {
@@ -1543,7 +1855,7 @@
             const cartTotal = document.getElementById('cartTotal');
             
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.finalPrice * item.quantity), 0);
             const totalPrice = subtotal + DELIVERY_CHARGE;
             
             cartCount.textContent = totalItems;
@@ -1556,8 +1868,9 @@
                     <div class="cart-item">
                         <div class="cart-item-image">${item.emoji}</div>
                         <div class="cart-item-info">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">₹${item.price} × ${item.quantity}</div>
+                            <div class="cart-item-name">${item.displayName}</div>
+                            ${item.customDetails ? `<div class="cart-item-details">${item.customDetails}</div>` : ''}
+                            <div class="cart-item-price">₹${item.finalPrice} × ${item.quantity}</div>
                         </div>
                         <button class="cart-item-remove" onclick="removeFromCart(${item.id})">×</button>
                     </div>
@@ -1592,8 +1905,8 @@
             const phone = document.getElementById('checkoutPhone').value;
             const address = document.getElementById('checkoutAddress').value;
             
-            let orderItems = cart.map(item => `${item.name} (₹${item.price}) × ${item.quantity}`).join('%0A');
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let orderItems = cart.map(item => `${item.displayName} (₹${item.finalPrice}) × ${item.quantity}`).join('%0A');
+            const subtotal = cart.reduce((sum, item) => sum + (item.finalPrice * item.quantity), 0);
             const totalPrice = subtotal + DELIVERY_CHARGE;
             
             const whatsappMessage = `New Order from ${name}%0A%0APhone: ${phone}%0AAddress: ${address}%0A%0AOrder Details:%0A${orderItems}%0A%0ASubtotal: ₹${subtotal}%0ADelivery Charge: ₹${DELIVERY_CHARGE}%0ATotal: ₹${totalPrice}`;
@@ -1620,5 +1933,4 @@
         });
     </script>
 </body>
-
 </html>
